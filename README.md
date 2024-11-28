@@ -18,4 +18,4 @@ The soul purpose of this mod is to give friend-groups a shot at their own Life-S
 
 ### Config
 
-- ***startlives: \<number>*** Sets the amount of lives, players have at the start."# lifesmp-mod" 
+- ***startlives: \<number>*** Sets the amount of lives, players have at the start.

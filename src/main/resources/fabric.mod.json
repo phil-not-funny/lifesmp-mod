@@ -1,0 +1,43 @@
+{
+	"schemaVersion": 1,
+	"id": "lifeanarchy",
+	"version": "${version}",
+	"name": "Lifeanarchy",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/lifeanarchy/icon.png",
+	"environment": "server",
+	"entrypoints": {
+		"main": [
+			"com.pnf.lifeanarchy.Lifeanarchy"
+		]
+	},
+	"mixins": [
+		"lifeanarchy.mixins.json",
+		{
+			"config": "lifeanarchy.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"custom": {
+		"mixin": {
+			"debug": true
+		}
+	},
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.21.3",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
