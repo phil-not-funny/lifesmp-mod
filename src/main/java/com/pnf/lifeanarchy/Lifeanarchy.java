@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.pnf.lifeanarchy.commands.GiveLifeCommand;
 import com.pnf.lifeanarchy.commands.SetLivesCommand;
+import com.pnf.lifeanarchy.commands.StartBoogeyCommand;
 import com.pnf.lifeanarchy.handlers.EntityDeathHandler;
 import com.pnf.lifeanarchy.handlers.PlayerJoinHandler;
 
@@ -34,15 +35,20 @@ public class Lifeanarchy implements ModInitializer {
 
 	private void registerCommands() {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-			dispatcher.register(CommandManager.literal("set_lives").requires(source -> source.hasPermissionLevel(1))
+			dispatcher.register(CommandManager.literal("setlives").requires(source -> source.hasPermissionLevel(1))
 					.then(CommandManager.argument("player", EntityArgumentType.player()).then(CommandManager
 							.argument("lives", IntegerArgumentType.integer()).executes(SetLivesCommand::run))));
 		});
 
+		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, enviroment) -> {
+			dispatcher.register(CommandManager.literal("startboogey").requires(source -> source.hasPermissionLevel(1))
+					.executes(StartBoogeyCommand::run).then(CommandManager
+							.argument("player", EntityArgumentType.player()).executes(StartBoogeyCommand::runArgs)));
+		});
+
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-			dispatcher.register(CommandManager.literal("give_life")
-					.then(CommandManager.argument("player", EntityArgumentType.player())
-							.executes(GiveLifeCommand::run)));
+			dispatcher.register(CommandManager.literal("givelife").then(
+					CommandManager.argument("player", EntityArgumentType.player()).executes(GiveLifeCommand::run)));
 		});
 	}
 }

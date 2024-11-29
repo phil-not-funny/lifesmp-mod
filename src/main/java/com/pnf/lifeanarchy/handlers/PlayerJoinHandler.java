@@ -27,27 +27,18 @@ public class PlayerJoinHandler implements Join {
 			PlayerDataManager.savePlayerint(handler.player, 4, "lives");
 		}
 		ScoreboardUtils.updatePlayerTeam(handler.player);
-		handler.player.sendMessage(
-			    Text.literal("Welcome to the Life-SMP Mod!")
-			         // Underline only this part
-			        .append(Text.literal("\nEverytime you die, you lose a Life.\n")) // Reset formatting here
-			        .append("When you lose your ")
-			        .append(Text.literal("last life").formatted(Formatting.BOLD).formatted(Formatting.GRAY)) // Bold and Gray
-			        .append(", you enter ")
-			        .append(Text.literal("Spectator").formatted(Formatting.ITALIC).formatted(Formatting.GRAY)) // Italic and Gray
-			        .append(" and are unable to play anymore.\n")
-			        .append(Text.literal("IMPORTANT: ").formatted(Formatting.RED))
-			        .append(Text.literal("Green").formatted(Formatting.GREEN))
-			        .append("- and ")
-			        .append(Text.literal("Yellow").formatted(Formatting.YELLOW))
-			        .append("-names may not kill ")
-			        .append(Text.literal("Red").formatted(Formatting.RED))
-			        .append("-names at random! Deathmatches must be initiated by ")
-			        .append(Text.literal("Red").formatted(Formatting.RED))
-			        .append("-names ")
-			        .append(Text.literal("first").formatted(Formatting.BOLD).formatted(Formatting.GRAY)) // Bold and Gray
-			        .append(".")
-			    , false); // send message
+		handler.player.sendMessage(Text.literal("")
+				.append(Text.literal("Welcome to the Life-SMP Mod!").formatted(Formatting.UNDERLINE))
+				.append(Text.literal("\nEverytime you die, you lose a Life.\n")).append("When you lose your ")
+				.append(Text.literal("last life").formatted(Formatting.BOLD).formatted(Formatting.GRAY))
+				.append(", you enter ")
+				.append(Text.literal("Spectator").formatted(Formatting.ITALIC).formatted(Formatting.GRAY))
+				.append(" and are unable to play anymore.\n")
+				.append(Text.literal("IMPORTANT: ").formatted(Formatting.RED))
+				.append("You may not not kill anyone below you at random!\n")
+				.append("Deathmatches must be initiated by them ")
+				.append(Text.literal("first").formatted(Formatting.BOLD).formatted(Formatting.GRAY)).append("."),
+				false);
 
 	}
 
