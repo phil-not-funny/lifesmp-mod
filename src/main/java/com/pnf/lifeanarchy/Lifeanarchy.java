@@ -5,14 +5,17 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.command.argument.EntityArgumentType;
+import net.minecraft.command.argument.EnumArgumentType;
 import net.minecraft.server.command.CommandManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.pnf.lifeanarchy.commands.GiveLifeCommand;
 import com.pnf.lifeanarchy.commands.SetLivesCommand;
-import com.pnf.lifeanarchy.commands.StartBoogeyCommand;
+import com.pnf.lifeanarchy.commands.BoogeyCommand;
+import com.pnf.lifeanarchy.commands.autocompletes.BoogeyCommandArgument;
 import com.pnf.lifeanarchy.handlers.EntityDeathHandler;
 import com.pnf.lifeanarchy.handlers.PlayerJoinHandler;
 
@@ -41,9 +44,10 @@ public class Lifeanarchy implements ModInitializer {
 		});
 
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, enviroment) -> {
-			dispatcher.register(CommandManager.literal("startboogey").requires(source -> source.hasPermissionLevel(1))
-					.executes(StartBoogeyCommand::run).then(CommandManager
-							.argument("player", EntityArgumentType.player()).executes(StartBoogeyCommand::runArgs)));
+			dispatcher.register(CommandManager.literal("boogeyman").requires(source -> source.hasPermissionLevel(1))
+					.then(CommandManager.argument("executes", StringArgumentType.word())
+							.suggests(BoogeyCommand::getSuggestions).executes(BoogeyCommand::runStart).then(CommandManager
+									.argument("player", EntityArgumentType.player()).executes(BoogeyCommand::runCure))));
 		});
 
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {

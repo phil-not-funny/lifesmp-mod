@@ -15,7 +15,6 @@ public class PlayerDataManager {
 	private static final File PLAYERDATA_FOLDER = new File("config/lifeanarchy");
     private static final Yaml YAML = new Yaml();
     
-    //public static void initPlayerData() {}
 	static {
 		if (!PLAYERDATA_FOLDER.exists())
 			PLAYERDATA_FOLDER.mkdirs();
@@ -50,4 +49,6 @@ public class PlayerDataManager {
 			return -1;
 		}
 	}
+	
+	
 }
