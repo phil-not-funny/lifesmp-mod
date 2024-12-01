@@ -1,14 +1,14 @@
 name: release
 
 on:
-  push:
-    tags:
-      - 'v*' # Triggers only when a tag matching the pattern 'v*' is pushed
+  workflow_run:
+    workflows: ["build"]
+    types:
+      - completed
 
 jobs:
   release:
     runs-on: ubuntu-22.04
-    needs: build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
