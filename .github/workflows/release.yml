@@ -8,6 +8,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-22.04
+    needs: build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
