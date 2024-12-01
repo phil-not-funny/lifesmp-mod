@@ -46,7 +46,7 @@ public class Lifeanarchy implements ModInitializer {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, enviroment) -> {
 			dispatcher.register(CommandManager.literal("boogeyman").requires(source -> source.hasPermissionLevel(1))
 					.then(CommandManager.argument("executes", StringArgumentType.word())
-							.suggests(BoogeyCommand::getSuggestions).executes(BoogeyCommand::runStart).then(CommandManager
+							.suggests(BoogeyCommand::getSuggestions).executes(BoogeyCommand::runStartEnd).then(CommandManager
 									.argument("player", EntityArgumentType.player()).executes(BoogeyCommand::runCure))));
 		});
 

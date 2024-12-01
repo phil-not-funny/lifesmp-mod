@@ -7,6 +7,8 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.serialization.Lifecycle;
+import com.pnf.lifeanarchy.Lifeanarchy;
 import com.pnf.lifeanarchy.commands.autocompletes.BoogeyCommandArgument;
 import com.pnf.lifeanarchy.misc.LifeCycleUtils;
 
@@ -17,12 +19,19 @@ import net.minecraft.text.Text;
 
 public class BoogeyCommand {
 
-	public static int runStart(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+	public static int runStartEnd(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
 		String method = StringArgumentType.getString(context, "executes");
-		if (method.equals(BoogeyCommandArgument.start.toString())) {
-			LifeCycleUtils.startBoogeyPhase(context.getSource().getServer(), -1);
+		if (BoogeyCommandArgument.start.match(method)) {
+			LifeCycleUtils.startBoogeyPhase(context.getSource().getServer());
 			context.getSource().sendFeedback(() -> Text.literal("Boogeyman-phase is now starting..."), true);
-		} else if (method.equals(BoogeyCommandArgument.cure.toString())) {
+		} else if (BoogeyCommandArgument.end.match(method)) {
+			boolean succeeded = LifeCycleUtils.endBoogeyPhase(context.getSource().getServer());
+			if (succeeded)
+				context.getSource().sendFeedback(() -> Text.literal("All remaining boogeymens have been punished."),
+						true);
+			else
+				context.getSource().sendFeedback(() -> Text.literal("No boogeymen remaining. No punishments."), true);
+		} else if (BoogeyCommandArgument.cure.match(method)) {
 			context.getSource().sendError(Text.literal("Please enter a Player to be CURED!"));
 			return 0;
 		}
@@ -31,10 +40,10 @@ public class BoogeyCommand {
 
 	public static int runCure(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
 		String method = StringArgumentType.getString(context, "executes");
-		if (method.equals(BoogeyCommandArgument.start.toString())) {
-			context.getSource().sendError(Text.literal("Player is an invalid argument for START!"));
+		if (BoogeyCommandArgument.start.match(method) || BoogeyCommandArgument.end.match(method)) {
+			context.getSource().sendError(Text.literal("Player is an invalid argument for START/END!"));
 			return 0;
-		} else if (method.equals(BoogeyCommandArgument.cure.toString())) {
+		} else if (BoogeyCommandArgument.cure.match(method)) {
 			ServerPlayerEntity player = EntityArgumentType.getPlayer(context, "player");
 			if (LifeCycleUtils.cureBoogey(player))
 				context.getSource().sendFeedback(

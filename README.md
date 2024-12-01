@@ -14,7 +14,9 @@ The soul purpose of this mod is to give friend-groups a shot at their own Life-S
 
 - ***/give_life \<player>***: Allows the player to give their life to another player.
 - ***/set_lives \<player> \<amount>***: (OP) Allows the operator to set the amount of lives another player has.
-- ***/boogeyman \<optional:player>***: (OP) Allows the operator to start the boogeyman countdown. If a player is specified, the boogeyman will be that player.
+- ***/boogeyman start***: (OP) Allows the operator to start the boogeyman countdown.
+- ***/boogeyman end***: (OP) Allows the operator to end the boogeyman phase and make all remaining boogeymen drop to 1 live.
+- ***/boogeyman cure \<player>***: (OP) Allows the operator to manually cure the boogeyman.
 
 ### Config
 

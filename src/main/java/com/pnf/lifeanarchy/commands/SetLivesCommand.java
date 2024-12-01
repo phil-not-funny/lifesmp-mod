@@ -4,6 +4,7 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.pnf.lifeanarchy.data.PlayerDataManager;
+import com.pnf.lifeanarchy.misc.LifeCycleUtils;
 import com.pnf.lifeanarchy.misc.ScoreboardUtils;
 
 import net.minecraft.command.argument.EntityArgumentType;
@@ -18,10 +19,7 @@ public class SetLivesCommand {
 		int number = IntegerArgumentType.getInteger(context, "lives");
 		ServerPlayerEntity player = EntityArgumentType.getPlayer(context, "player");
 
-		PlayerDataManager.savePlayerint(player, number, "lives");
-		ScoreboardUtils.updatePlayerTeam(player);
-		if (number > 0)
-			player.changeGameMode(GameMode.SURVIVAL);
+		LifeCycleUtils.setLives(player, number);
 
 		context.getSource().sendFeedback(() -> Text.literal("Lives are now set to " + number), true);
 		return 1;

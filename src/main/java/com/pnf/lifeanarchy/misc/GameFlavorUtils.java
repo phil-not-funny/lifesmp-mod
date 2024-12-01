@@ -28,4 +28,8 @@ public class GameFlavorUtils {
 	public static void playSound(ServerPlayerEntity p, SoundEvent s) {
 		p.playSoundToPlayer(s, SoundCategory.AMBIENT, 1.0F, 1.0F);
 	}
+	
+	public static void playSound(ServerPlayerEntity p, SoundEvent s, float volume, float pitch) {
+		p.playSoundToPlayer(s, SoundCategory.AMBIENT, volume, pitch);
+	}
 }
