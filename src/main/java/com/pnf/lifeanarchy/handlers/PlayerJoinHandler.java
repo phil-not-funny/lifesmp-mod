@@ -3,6 +3,7 @@ package com.pnf.lifeanarchy.handlers;
 import com.pnf.lifeanarchy.Lifeanarchy;
 import com.pnf.lifeanarchy.data.ModConfigManager;
 import com.pnf.lifeanarchy.data.PlayerDataManager;
+import com.pnf.lifeanarchy.misc.CommandUtils;
 import com.pnf.lifeanarchy.misc.ScoreboardUtils;
 
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -20,7 +21,7 @@ public class PlayerJoinHandler implements Join {
 		if ((lives = PlayerDataManager.loadPlayerInt(handler.player, "lives")) != -1) {
 			Lifeanarchy.LOGGER.info(handler.player.getName().getString() + " has " + lives + " lives");
 		} else {
-			lives = ModConfigManager.loadInt("startlives") != -1 ? ModConfigManager.loadInt("startlives") : 4;
+			lives = server.getGameRules().getInt(CommandUtils.GR_START_LIVES);
 			Lifeanarchy.LOGGER.info(handler.player.getName().getString() + " is new Player. Setting " + lives + " lives");
 			PlayerDataManager.savePlayerint(handler.player, lives, "lives");
 		}

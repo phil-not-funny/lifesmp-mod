@@ -14,12 +14,6 @@ import org.yaml.snakeyaml.Yaml;
 public class ModConfigManager {
 	private static final File CONFIG_FOLDER = new File("config/lifeanarchy");
 	private static final Yaml YAML = new Yaml();
-
-	static {
-		if (loadInt("startlives") == -1) {
-			saveInt("startlives", 3);
-		}
-	}
 	
 	private static File getConfigFile() {
 		return new File(CONFIG_FOLDER, "config.yaml");
