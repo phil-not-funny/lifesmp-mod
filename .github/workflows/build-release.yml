@@ -24,7 +24,12 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
-    
+
+    - name: Rename output files to match tag
+      run: |
+        JAR_FILE=$(find build/libs -name "lifeanarchy-*.jar" ! -name "*sources.jar")
+        mv "$JAR_FILE" "build/libs/lifeanarchy-${{ github.ref_name }}.jar"
+
     - name: List build/libs directory
       run: ls -la build/libs
 
@@ -45,6 +50,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: build/libs/*.jar
-        asset_name: lifeanarchy-${{ github.ref }}.jar
+        asset_path: build/libs/lifeanarchy-${{ github.ref_name }}.jar
+        asset_name: lifeanarchy-${{ github.ref_name }}.jar
         asset_content_type: application/java-archive
