@@ -1,0 +1,30 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers only when a tag matching the pattern 'v*' is pushed
+
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts from previous workflow
+        uses: actions/download-artifact@v4
+        with:
+          name: Artifacts # Matches the name used in the build workflow
+          path: build/libs/
+
+      - name: Create a GitHub release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }} # Use the tag that triggered the workflow
+          release_name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          files: build/libs/*.jar
