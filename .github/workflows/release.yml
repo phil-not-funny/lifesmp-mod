@@ -12,6 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Extract mod_version from gradle.properties
+        id: extract_version
+        run: |
+          mod_version=$(grep '^mod_version=' gradle.properties | cut -d'=' -f2)
+          echo "MOD_VERSION=${mod_version}" >> $GITHUB_ENV
+
       - name: Download build artifacts from previous workflow
         uses: actions/download-artifact@v4
         with:
@@ -23,8 +29,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref_name }} # Use the tag that triggered the workflow
-          release_name: Release ${{ github.ref_name }}
+          tag_name: ${{ env.MOD_VERSION }} # Use the tag that triggered the workflow
+          release_name: Release ${{ env.MOD_VERSION }}
           draft: false
           prerelease: false
           files: build/libs/*.jar
