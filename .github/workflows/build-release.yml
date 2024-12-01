@@ -24,6 +24,9 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
+    
+    - name: List build/libs directory
+          run: ls -la build/libs
 
     - name: Create Release
       id: create_release
