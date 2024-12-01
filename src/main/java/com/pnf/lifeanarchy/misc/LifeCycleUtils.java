@@ -29,8 +29,6 @@ public class LifeCycleUtils {
 		for (ServerPlayerEntity player : players) {
 			if (random.nextDouble() <= probability) {
 				boogeymen.add(player);
-				// Lifeanarchy.LOGGER.info("Player selected as boogeyman: " +
-				// player.getName().getString());
 				probability *= 0.2;
 			}
 		}
@@ -45,7 +43,7 @@ public class LifeCycleUtils {
 				.contains(player.getUuidAsString())) {
 			boogeymen.remove(player.getUuidAsString());
 			MessageUtils.displayTitle(player, "You're cured!", Formatting.GREEN);
-			GameFlavorUtils.playSound(player, SoundEvents.BLOCK_NOTE_BLOCK_CHIME.value());
+			GameFlavorUtils.playSound(player, SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value());
 			ModConfigManager.savePlayerList("boogeymen", boogeymen);
 			return true;
 		}
@@ -81,10 +79,10 @@ public class LifeCycleUtils {
 
 				int minutesLeft = (int) (remainingTime / ONE_MINUTE);
 				if (minutesLeft == 5 || (minutesLeft == 1 && !oneMinWarning)) {
-					oneMinWarning = true;
 					MessageUtils.broadcastMessage(server, Text.literal("The boogeyman is being chosen in " + minutesLeft
 							+ " minute" + (minutesLeft > 1 ? "s." : ".")).formatted(Formatting.RED));
 					GameFlavorUtils.broadcastSound(server, SoundEvents.ENTITY_LIGHTNING_BOLT_THUNDER);
+					oneMinWarning = true;
 
 				} else if (remainingTime <= 10 * ONE_SECOND && !lastWarning) {
 					MessageUtils.broadcastMessage(server,

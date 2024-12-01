@@ -1,7 +1,9 @@
 package com.pnf.lifeanarchy.handlers;
 
 import com.pnf.lifeanarchy.Lifeanarchy;
+import com.pnf.lifeanarchy.data.ModConfigManager;
 import com.pnf.lifeanarchy.data.PlayerDataManager;
+import com.pnf.lifeanarchy.misc.LifeCycleUtils;
 import com.pnf.lifeanarchy.misc.MessageUtils;
 import com.pnf.lifeanarchy.misc.ScoreboardUtils;
 
@@ -20,8 +22,18 @@ public class EntityDeathHandler implements AfterDeath {
 			int lives = PlayerDataManager.loadPlayerInt(player, "lives") - 1;
 			Lifeanarchy.LOGGER.info("Player " + player.getName() + " died by " + damageSource.getName() + " and lost one Life");
 			
+			// set lives
 			PlayerDataManager.savePlayerint(player, lives, "lives");
 			ScoreboardUtils.updatePlayerTeam(player);
+			
+			//boogeyman
+			if(damageSource.getAttacker() instanceof ServerPlayerEntity killer) {
+				if(ModConfigManager.loadPlayerList("boogeymen").contains(killer.getUuidAsString())) {
+					LifeCycleUtils.cureBoogey(killer);
+					Lifeanarchy.LOGGER.info("The Boogeyman got cured by killing someone!");
+				}
+			}
+			
 			if (lives == 1) {
 				player.sendMessage(Text.literal("You are now on ").append(Text.literal("your Last Life!").formatted(Formatting.RED)).append("\nOne more death an you're ").append(Text.literal("out!\n").formatted(Formatting.GRAY)).append(Text.literal("Alliences are now broken and you become hostile to other players!").formatted(Formatting.BOLD)));
 			}
