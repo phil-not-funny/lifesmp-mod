@@ -2,6 +2,8 @@ package com.pnf.lifeanarchy.misc;
 
 import java.util.function.Predicate;
 
+import net.minecraft.network.packet.s2c.play.EntityAnimationS2CPacket;
+import net.minecraft.network.packet.s2c.play.ParticleS2CPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
@@ -31,5 +33,9 @@ public class GameFlavorUtils {
 	
 	public static void playSound(ServerPlayerEntity p, SoundEvent s, float volume, float pitch) {
 		p.playSoundToPlayer(s, SoundCategory.AMBIENT, volume, pitch);
+	}
+	
+	public static void playTotem(ServerPlayerEntity p) {
+		
 	}
 }

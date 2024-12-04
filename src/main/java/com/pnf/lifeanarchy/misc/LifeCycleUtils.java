@@ -44,6 +44,7 @@ public class LifeCycleUtils {
 
 			player.changeGameMode(GameMode.SPECTATOR);
 			MessageUtils.displayTitle(player, "You're Out!", Formatting.RED);
+			player.requestRespawn();
 		}
 	}
 
@@ -70,7 +71,7 @@ public class LifeCycleUtils {
 				if (random.nextDouble() <= probability
 						&& (PlayerDataManager.loadPlayerInt(player, "lives") > 1 || forceBoogey)) {
 					boogeymen.add(player);
-					probability *= 0.2;
+					probability *= server.getGameRules().get(CommandUtils.GR_BOOGEY_SECOND_PROBABILITY).get();
 				}
 			}
 			Lifeanarchy.LOGGER.info("Boogeyman selection complete. Total selected: " + boogeymen.size());
@@ -198,6 +199,6 @@ public class LifeCycleUtils {
 	}
 
 	public static void startBoogeyPhase(MinecraftServer server) {
-		startBoogeyPhase(server, -1);
+		startBoogeyPhase(server, server.getGameRules().getInt(CommandUtils.GR_BOOGEY_TIMER));
 	}
 }
