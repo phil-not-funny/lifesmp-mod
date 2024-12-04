@@ -12,11 +12,11 @@ import com.pnf.lifeanarchy.Lifeanarchy;
 import com.pnf.lifeanarchy.data.ModConfigManager;
 import com.pnf.lifeanarchy.data.PlayerDataManager;
 
+import com.pnf.lifeanarchy.managers.CommandManager;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -71,7 +71,7 @@ public class LifeCycleUtils {
 				if (random.nextDouble() <= probability
 						&& (PlayerDataManager.loadPlayerInt(player, "lives") > 1 || forceBoogey)) {
 					boogeymen.add(player);
-					probability *= server.getGameRules().get(CommandUtils.GR_BOOGEY_SECOND_PROBABILITY).get();
+					probability *= server.getGameRules().get(CommandManager.GR_BOOGEY_SECOND_PROBABILITY).get();
 				}
 			}
 			Lifeanarchy.LOGGER.info("Boogeyman selection complete. Total selected: " + boogeymen.size());
@@ -199,6 +199,6 @@ public class LifeCycleUtils {
 	}
 
 	public static void startBoogeyPhase(MinecraftServer server) {
-		startBoogeyPhase(server, server.getGameRules().getInt(CommandUtils.GR_BOOGEY_TIMER));
+		startBoogeyPhase(server, server.getGameRules().getInt(CommandManager.GR_BOOGEY_TIMER));
 	}
 }

@@ -6,8 +6,12 @@ This mod brings the unique gameplay mechanics of [Grian's popular "Life SMP"](ht
 ---
 
 ## Features  
-Life-SMP Mod is designed to replicate the gameplay from the Life Series. Whether you're giving lives, managing the Boogeyman mechanic, or customizing game rules, this mod ensures every session to be the way you wanted the Life-Series to turn out.
-
+Life-SMP Mod is designed to replicate the gameplay from the Life Series.<br>
+**All of these are highly customizable!**
+- Give-Life Command
+- Boogeyman (or -men)
+- Enable/Disable Helmets
+- Advanced Spawn Protection
 ---
 
 ## Installation  
@@ -28,7 +32,7 @@ Here are the commands available to enhance your Life-SMP experience:
 
 ### Operator Commands  
 - `/set_lives <player> <amount>`  
-  Set the exact number of lives for any player.  
+  Set the exact number of lives for any player. <br>This is mostly for debugging/admin work.
 - `/boogeyman start`  
   Start the Boogeyman countdown.  
 - `/boogeyman end`  
@@ -52,3 +56,7 @@ Customize your Life-SMP gameplay using these gamerules:
   Whether to allow players to "revive" players with 0 lives by giving them theirs (through /givelife). (Default: false)  
 - **`lifesmp_allowHelmets <true/false>`**  
   Whether to allow players to use helmets or not (Default: false)  
+- **`lifesmp_enableSpawnProtection <true/false>`**  
+  Whether to enable advanced spawn protection (Default: true)  
+- **`lifesmp_spawnProtectionDuration <number>`**  
+  Duration of the spawn protection in seconds (Default: 8)  

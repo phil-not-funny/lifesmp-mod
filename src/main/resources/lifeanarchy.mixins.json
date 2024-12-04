@@ -5,7 +5,9 @@
 	"mixins": [
 		"StartServerMixin",
       	"PlayerArmorInventoryMixin",
-		"PlayerArmorEquipMixin"
+		"PlayerArmorEquipMixin",
+		"SpawnProtectionAttackMixin",
+		"SpawnProtectionDamageMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

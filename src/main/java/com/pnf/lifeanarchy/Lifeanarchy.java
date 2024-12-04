@@ -1,20 +1,16 @@
 package com.pnf.lifeanarchy;
 
+import com.pnf.lifeanarchy.managers.EventManager;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
-import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.fabricmc.fabric.mixin.event.interaction.ServerPlayerEntityMixin;
-import net.minecraft.server.network.ServerPlayerEntity;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.pnf.lifeanarchy.handlers.EntityDeathHandler;
 import com.pnf.lifeanarchy.handlers.PlayerJoinHandler;
-import com.pnf.lifeanarchy.misc.CommandUtils;
+import com.pnf.lifeanarchy.managers.CommandManager;
 
 public class Lifeanarchy implements ModInitializer {
 	public static final String MOD_ID = "lifeanarchy";
@@ -24,14 +20,7 @@ public class Lifeanarchy implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Lifeanarchy is loading");
-		registerEvents();
-		CommandUtils.registerCommands();;
+		EventManager.registerEvents();
+		CommandManager.registerCommands();;
 	}
-
-	private void registerEvents() {
-		ServerLivingEntityEvents.AFTER_DEATH.register(new EntityDeathHandler());
-		ServerPlayConnectionEvents.JOIN.register(new PlayerJoinHandler());
-	}
-
-	
 }

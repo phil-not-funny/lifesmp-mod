@@ -1,6 +1,6 @@
 package com.pnf.lifeanarchy.mixin;
 
-import com.pnf.lifeanarchy.misc.CommandUtils;
+import com.pnf.lifeanarchy.managers.CommandManager;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,7 +18,7 @@ public class PlayerArmorEquipMixin {
     private void onEquipStack(EquipmentSlot slot, ItemStack oldStack, ItemStack newStack, CallbackInfo ci) {
         if ((Object) this instanceof PlayerEntity player) {
             if (slot == EquipmentSlot.HEAD && !newStack.isEmpty()
-                    && !player.getServer().getGameRules().getBoolean(CommandUtils.GR_ALLOW_HELMETS)) {
+                    && !player.getServer().getGameRules().getBoolean(CommandManager.GR_ALLOW_HELMETS)) {
                 player.sendMessage(Text.literal("Wearing helmets is not allowed!").formatted(Formatting.RED), false);
                 player.getInventory().setStack(39, ItemStack.EMPTY);
                 ci.cancel();
