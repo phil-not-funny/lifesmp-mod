@@ -2,8 +2,6 @@ package com.pnf.lifeanarchy.misc;
 
 import java.util.function.Predicate;
 
-import net.minecraft.network.packet.s2c.play.EntityAnimationS2CPacket;
-import net.minecraft.network.packet.s2c.play.ParticleS2CPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
