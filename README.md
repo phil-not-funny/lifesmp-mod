@@ -49,4 +49,6 @@ Customize your Life-SMP gameplay using these gamerules:
 - **`lifesmp_boogeySecondProbability <number>`**  
   Adjust the probability multiplier for additional Boogeymen being chosen. (Default: 0.2)  
 - **`lifesmp_allowGiveLifeToGreys <true/false>`**  
-  Allow players to revive "grey" players by giving them a life. (Default: false)  
+  Whether to allow players to "revive" players with 0 lives by giving them theirs (through /givelife). (Default: false)  
+- **`lifesmp_allowHelmets <true/false>`**  
+  Whether to allow players to use helmets or not (Default: false)  
