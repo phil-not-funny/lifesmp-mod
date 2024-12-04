@@ -22,7 +22,7 @@ public class CommandUtils {
 	public static final Key<IntRule> GR_BOOGEY_TIMER = GameRuleRegistry.register("lifesmp_boogeyTimer", Category.PLAYER, GameRuleFactory.createIntRule(5));
 	public static final Key<DoubleRule> GR_BOOGEY_SECOND_PROBABILITY = GameRuleRegistry.register("lifesmp_boogeySecondProbability", Category.PLAYER, GameRuleFactory.createDoubleRule(0.2));
 	public static final Key<BooleanRule> GR_ALLOW_GIVELIFE_TO_GREYS = GameRuleRegistry.register("lifesmp_allowGiveLifeToGreys", Category.PLAYER, GameRuleFactory.createBooleanRule(false));
-	
+	public static final Key<BooleanRule> GR_ALLOW_HELMETS= GameRuleRegistry.register("lifesmp_allowHelmets", Category.PLAYER, GameRuleFactory.createBooleanRule(false));
 	
 	public static void registerCommands() {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {

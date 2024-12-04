@@ -20,11 +20,7 @@
 		]
 	},
 	"mixins": [
-		"lifeanarchy.mixins.json",
-		{
-			"config": "lifeanarchy.client.mixins.json",
-			"environment": "client"
-		}
+		"lifeanarchy.mixins.json"
 	],
 	"custom": {
 		"mixin": {
