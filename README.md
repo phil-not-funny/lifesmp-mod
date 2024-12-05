@@ -1,9 +1,6 @@
 # Life-SMP Mod Fabric
-### Inspired by [Grian's Life Series](https://www.youtube.com/c/grian)  
-
-This **fabric serverside** mod brings the unique gameplay mechanics of [Grian's popular "Life SMP"](https://www.youtube.com/playlist?list=PLU2851hDb3SHLdAlj8dxqHPeT_qIBbRBv) to you and your friends.  
-
----
+### Inspired by [Grian's Life Series](https://www.youtube.com/c/grian)
+This **fabric serverside** mod brings the unique gameplay mechanics of [Grian's popular "Life SMP"](https://www.youtube.com/playlist?list=PLU2851hDb3SHLdAlj8dxqHPeT_qIBbRBv) to you and your friends.
 
 ## Features  
 Life-SMP Mod is designed to replicate the gameplay from the Life Series.<br>
@@ -13,16 +10,14 @@ Life-SMP Mod is designed to replicate the gameplay from the Life Series.<br>
 - Enable/Disable Helmets
 - Advanced Spawn Protection
 - Advanced Kill Detection
----
 
-## Installation  
-
+## Installation
 To download the mod, head over to the **[Releases tab](https://github.com/phil-not-funny/lifesmp-mod/releases)** on GitHub. Ensure your setup matches these requirements:  
-- **Minecraft version:** 1.21.3  
-- **Fabric Loader version:** 0.16.9-1.21.3  
-- **Fabric API version:** 0.107.0+1.21.3  
+- **Minecraft version:** 1.21.4  
+- **Fabric Loader version:** 0.16.9-1.21.4 
+- **Fabric API version:** 0.110.5+1.21.4
 
----
+## 
 
 ## Commands  
 Here are the commands available to enhance your Life-SMP experience:  
