@@ -1,6 +1,5 @@
 package com.pnf.lifeanarchy.mixin;
 
-import com.pnf.lifeanarchy.Lifeanarchy;
 import com.pnf.lifeanarchy.managers.CommandManager;
 import com.pnf.lifeanarchy.managers.SpawnProtectionManager;
 import net.minecraft.entity.Entity;
@@ -13,9 +12,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public class SpawnProtectionAttackMixin {
+public class PlayerAttackMixin {
     @Inject(method = "attack", at = @At("HEAD"), cancellable = true)
-    private void preventAttack(Entity target, CallbackInfo ci) {
+    private void onAttack(Entity target, CallbackInfo ci) {
         if (target.getServer().getGameRules().getBoolean(CommandManager.GR_ENABLE_SPAWN_PROTECTION)
                 && SpawnProtectionManager.isProtected((PlayerEntity) (Object) this)) {
             ((PlayerEntity) (Object) this).sendMessage(

@@ -18,10 +18,12 @@ import net.minecraft.world.GameRules.Key;
 public abstract class CommandManager {
 	public static final Key<IntRule> GR_START_LIVES = GameRuleRegistry.register("lifesmp_startLives", Category.PLAYER, GameRuleFactory.createIntRule(3));
 	public static final Key<IntRule> GR_BOOGEY_TIMER = GameRuleRegistry.register("lifesmp_boogeyTimer", Category.PLAYER, GameRuleFactory.createIntRule(5));
+	public static final Key<IntRule> GR_BOOGEY_FAIL_PENALTY = GameRuleRegistry.register("lifesmp_boogeyFailPenalty", Category.PLAYER, GameRuleFactory.createIntRule(999));
 	public static final Key<DoubleRule> GR_BOOGEY_SECOND_PROBABILITY = GameRuleRegistry.register("lifesmp_boogeySecondProbability", Category.PLAYER, GameRuleFactory.createDoubleRule(0.2));
 	public static final Key<BooleanRule> GR_ALLOW_GIVELIFE_TO_GREYS = GameRuleRegistry.register("lifesmp_allowGiveLifeToGreys", Category.PLAYER, GameRuleFactory.createBooleanRule(false));
 	public static final Key<BooleanRule> GR_ALLOW_HELMETS = GameRuleRegistry.register("lifesmp_allowHelmets", Category.PLAYER, GameRuleFactory.createBooleanRule(false));
 	public static final Key<BooleanRule> GR_ENABLE_SPAWN_PROTECTION = GameRuleRegistry.register("lifesmp_enableSpawnProtection", Category.PLAYER, GameRuleFactory.createBooleanRule(true));
+	public static final Key<BooleanRule> GR_ENABLE_LIFESTEAL = GameRuleRegistry.register("lifesmp_enableLifesteal", Category.PLAYER, GameRuleFactory.createBooleanRule(false));
 	public static final Key<IntRule> GR_SPAWN_PROTECTION_TIME = GameRuleRegistry.register("lifesmp_spawnProtectionDuration", Category.PLAYER, GameRuleFactory.createIntRule(8));
 
 	public static void registerCommands() {

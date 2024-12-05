@@ -3,11 +3,10 @@
 	"package": "com.pnf.lifeanarchy.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"StartServerMixin",
-      	"PlayerArmorInventoryMixin",
-		"PlayerArmorEquipMixin",
-		"SpawnProtectionAttackMixin",
-		"SpawnProtectionDamageMixin"
+		"InventoryMoveMixin",
+		"ArmorEquipMixin",
+      	"PlayerAttackMixin",
+		"PlayerDamagedMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

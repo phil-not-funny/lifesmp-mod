@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
-public class PlayerArmorEquipMixin {
+public class ArmorEquipMixin {
     @Inject(method = "onEquipStack", at = @At("HEAD"), cancellable = true)
     private void onEquipStack(EquipmentSlot slot, ItemStack oldStack, ItemStack newStack, CallbackInfo ci) {
         if ((Object) this instanceof PlayerEntity player) {

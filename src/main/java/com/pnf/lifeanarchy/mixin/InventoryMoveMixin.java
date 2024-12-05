@@ -13,7 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 @Mixin(PlayerInventory.class)
-public class PlayerArmorInventoryMixin {
+public class InventoryMoveMixin {
     @Inject(method = "setStack", at = @At("HEAD"), cancellable = true)
     private void onSetStack(int slot, ItemStack stack, CallbackInfo ci) {
         PlayerInventory inventory = (PlayerInventory) (Object) this;

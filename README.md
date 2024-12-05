@@ -1,7 +1,7 @@
-# Life-SMP Mod  
+# Life-SMP Mod Fabric
 ### Inspired by [Grian's Life Series](https://www.youtube.com/c/grian)  
 
-This mod brings the unique gameplay mechanics of [Grian's popular "Life SMP"](https://www.youtube.com/playlist?list=PLU2851hDb3SHLdAlj8dxqHPeT_qIBbRBv) to you and your friends.  
+This **fabric serverside** mod brings the unique gameplay mechanics of [Grian's popular "Life SMP"](https://www.youtube.com/playlist?list=PLU2851hDb3SHLdAlj8dxqHPeT_qIBbRBv) to you and your friends.  
 
 ---
 
@@ -12,6 +12,7 @@ Life-SMP Mod is designed to replicate the gameplay from the Life Series.<br>
 - Boogeyman (or -men)
 - Enable/Disable Helmets
 - Advanced Spawn Protection
+- Advanced Kill Detection
 ---
 
 ## Installation  
@@ -51,7 +52,10 @@ Customize your Life-SMP gameplay using these gamerules:
 - **`lifesmp_boogeyTimer <number>`**  
   Define the time in minutes before a Boogeyman is selected after the first warning. (Default: 5)  
 - **`lifesmp_boogeySecondProbability <number>`**  
-  Adjust the probability multiplier for additional Boogeymen being chosen. (Default: 0.2)  
+  Adjust the probability multiplier for additional Boogeymen being chosen. (Default: 0.2)
+- **`lifesmp_boogeyFailPenalty <number>`**  
+  Adjust the number of lives the boogeyman looses when they fail.  
+  Lives lost are **capped** at 1 life. (Default: 999)
 - **`lifesmp_allowGiveLifeToGreys <true/false>`**  
   Whether to allow players to "revive" players with 0 lives by giving them theirs (through /givelife). (Default: false)  
 - **`lifesmp_allowHelmets <true/false>`**  
@@ -60,3 +64,5 @@ Customize your Life-SMP gameplay using these gamerules:
   Whether to enable advanced spawn protection (Default: true)  
 - **`lifesmp_spawnProtectionDuration <number>`**  
   Duration of the spawn protection in seconds (Default: 8)  
+- **`lifesmp_enableLifeSteal <true/false>`**  
+  Whether players should gain a life when they kill a player or not (Default: false)  

@@ -19,6 +19,10 @@ public class MessageUtils {
 		p.networkHandler.sendPacket(new SubtitleS2CPacket(Text.literal(msg).formatted(format)));
 	}
 
+	public static void displayBigTitle(ServerPlayerEntity p, String msg, Formatting format) {
+		p.networkHandler.sendPacket(new TitleS2CPacket(Text.literal(msg).formatted(format)));
+	}
+
 	public static void broadcastTitle(MinecraftServer s, Text success, Predicate<ServerPlayerEntity> predicate) {
 		for (ServerPlayerEntity p : s.getPlayerManager().getPlayerList()) {
 			if (predicate.test(p)) {
